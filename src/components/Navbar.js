@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Navbar = ({ toggleSongs }) => {
     return (
         <Nav>
-            <h1>HipHop</h1>
+            <h1>Chill</h1>
             <button onClick={toggleSongs}>List <GiMusicalNotes /></button>
         </Nav>
     )
@@ -27,5 +27,6 @@ button{
     font-size:20px;
     cursor:pointer;
 }
+
 `
 export default Navbar

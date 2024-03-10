@@ -1,18 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Song = ({ img, artist, title }) => {
+const Song = ({ playSongSkip, song, songs, id, setCurrentSong, setSongs }) => {
+    const chooseSong = () => {
+        activeSong()
+        playSongSkip()
+        setCurrentSong(song)
+    }
+    const activeSong=()=>{
+        const newSongArray = songs.map(song => {
+            if (song.id === id) {
+                return {
+                    ...song,
+                    active: true
+                }
+            } else {
+                return {
+                    ...song,
+                    active: false
+                }
+            }
+        })
+        setSongs(newSongArray)
+    }
+
     return (
-        <SongContainer>
-            <img src={img} alt="" srcset="" />
-            <div className="info">
-                <h5>{artist}</h5>
-                <p>{title}</p>
+        <SongContainer className='selected' onClick={chooseSong}>
+            <div className={song.active ? "selected" : ""}>
+                <img src={song.cover} alt="" srcset="" />
+                <div className="info">
+                    <h5>{song.artist}</h5>
+                    <p>{song.name}</p>
+                </div>
             </div>
         </SongContainer>
     )
 }
 const SongContainer = styled.div`
+>div{
 background-color:#5C469C;
 margin:5px 0;
 display:flex;
@@ -20,6 +45,8 @@ justify-content: space-between;
 align-items: center;
 color:white;
 padding:0 10px;
+cursor:pointer;
+}
 img{
     width:80px;
     height:80px;
@@ -31,6 +58,9 @@ h5{
 p{
     font-size:15px;
     
+}
+.selected{
+    background-color:green;
 }
 `
 export default Song

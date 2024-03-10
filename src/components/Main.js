@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Main = ({ songs }) => {
+const Main = ({ songs, currentSong }) => {
 
     return (
         <MainContainer>
             <h1>Relax Time</h1>
-            <img src={songs[0].cover} alt="" srcset="" />
-            <h4>{songs[0].artist}</h4>
-            <p>{songs[0].name}</p>
+            <img src={currentSong.cover} alt="" srcset="" />
+            <h4>{currentSong.artist}</h4>
+            <p>{currentSong.name}</p>
         </MainContainer>
     )
 }

@@ -2,16 +2,16 @@ import React from "react";
 import Song from "./Song";
 import styled from "styled-components";
 
-const Songs = ({ songs, showSongs }) => {
-    return (
-        <SongsContainer>
-            <div className={showSongs ? "show" : "hide"}>
-                {songs.map((song, index) => (
-                    <Song img={song.cover} artist={song.artist} title={song.name} />
-                ))}
-            </div>
-        </SongsContainer>
-    );
+const Songs = ({ playSongSkip, songs, playSongHandler, showSongs, setSongs, setCurrentSong }) => {
+  return (
+    <SongsContainer>
+      <div className={showSongs ? "show" : "hide"}>
+        {songs.map((song, index) => (
+          <Song playSongSkip={playSongSkip} songs={songs} setSongs={setSongs} setCurrentSong={setCurrentSong} song={song} id={song.id} />
+        ))}
+      </div>
+    </SongsContainer>
+  );
 };
 const SongsContainer = styled.div`
   .hide {
@@ -38,6 +38,15 @@ const SongsContainer = styled.div`
     height: 100vh;
     width: 40vh;
   }
+  ::-webkit-scrollbar-thumb{
+    background-color: green;
+    border-radius:10px;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: grey;
+  }
+  ::-webkit-scrollbar{
+  width:6px;}
 `;
 
 export default Songs;
